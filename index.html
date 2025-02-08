@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .button:hover {
+            background-color: darkblue;
+            transform: scale(1.1);
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .banner {
+            display: inline-block;
+            padding: 20px;
+            font-size: 24px;
+            background-color: orange;
+            animation: slideIn 1s ease-in-out;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid lightgray;
+            border-top: 5px solid blue;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">Welcome to My Interactive Page</div>
+    <br><br>
+    <button class="button" onclick="toggleSpinner()">Toggle Spinner</button>
+    <div class="spinner" id="spinner"></div>
+    <br>
+    <button class="button" onclick="calculateArea(5, 10)">Calculate Area</button>
+    <p id="result"></p>
+    
+    <script>
+        function calculateArea(width, height) {
+            let area = width * height;
+            document.getElementById('result').innerText = "Area: " + area;
+            return area;
+        }
+        
+        let globalVariable = "I am global";
+        function demonstrateScope() {
+            let localVariable = "I am local";
+            console.log(globalVariable); 
+            console.log(localVariable);
+        }
+        demonstrateScope();
+        
+        function toggleSpinner() {
+            let spinner = document.getElementById('spinner');
+            spinner.style.display = (spinner.style.display === 'none' || spinner.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
+
